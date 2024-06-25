@@ -1,10 +1,11 @@
-import Image from "next/image";
+import { ThemeSwitcher } from "./components/reusable/ThemeSwitcher";
 
 export default function Home() {
   return (
-    <main className="flex bg-red-400 min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>
-        hello sakthi
+        hello sakthi 
+        
       </div>
     </main>
   );
