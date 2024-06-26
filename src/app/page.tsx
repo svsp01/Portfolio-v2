@@ -1,4 +1,3 @@
-import { ThemeSwitcher } from "./components/reusable/ThemeSwitcher";
 
 export default function Home() {
   return (
