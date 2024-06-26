@@ -15,7 +15,7 @@ export function ThemeSwitcher() {
   if (!mounted) return null;
 
   return (
-    <div className="p-6">
+    <div className="p-2 sm:p-6">
       <Switch
         checked={theme === 'dark'}
         startContent={<SunIcon />}
