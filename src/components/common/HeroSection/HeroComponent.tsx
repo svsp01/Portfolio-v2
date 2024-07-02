@@ -71,7 +71,7 @@ function HeroComponent() {
           <div className="w-full md:w-1/2 mt-12 md:mt-0 relative">
             <div className="w-96 h-96 mx-auto relative transform-style-3d animate-float">
               <div
-                className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-lg shadow-2xl"
+                className="absolute inset-0 bg-gradient-to-r rounded-xl from-blue-400 to-indigo-500  shadow-2xl"
                 style={{
                   transform: `rotateX(${mousePosition.y / 40}deg) rotateY(${
                     mousePosition.x / 40
@@ -80,14 +80,14 @@ function HeroComponent() {
                 }}
               >
                 <Image
-                 src={card3}
-                  className="w-full h-full "
+                  src={card3}
+                  className="w-full h-full rounded-xl"
                   alt="card image 3"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white opacity-30 rounded-lg"></div>
               </div>
               <div
-                className="absolute inset-0 bg-gradient-to-l from-purple-400 to-pink-500 rounded-lg shadow-2xl transform translate-z-20"
+                className="absolute inset-0 bg-gradient-to-l from-purple-400 to-pink-500 rounded-xl shadow-2xl transform translate-z-20"
                 style={{
                   transform: `rotateX(${mousePosition.y / 40}deg) rotateY(${
                     mousePosition.x / 40
@@ -97,14 +97,14 @@ function HeroComponent() {
               >
                 <Image
                   src={card1}
-                  className="w-full h-full "
+                  className="w-full h-full rounded-xl "
                   alt="card image 3"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white opacity-30 rounded-lg"></div>
               </div>
               <div
-                className="absolute inset-0 bg-gradient-to-tr from-green-400 to-teal-500 rounded-lg shadow-2xl transform translate-z-40"
+                className="absolute inset-0 bg-gradient-to-tr from-green-400 to-teal-500 rounded-xl shadow-2xl transform translate-z-40"
                 style={{
                   transform: `rotateX(${mousePosition.y / 40}deg) rotateY(${
                     mousePosition.x / 40
@@ -114,7 +114,7 @@ function HeroComponent() {
               >
                 <Image
                   src={card2}
-                  className="w-full h-full "
+                  className="w-full h-full rounded-xl"
                   alt="card image 3"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white opacity-30 rounded-lg"></div>
@@ -146,6 +146,7 @@ function HeroComponent() {
           ))}
         </div>
       </div>
+      
     </div>
   );
 }

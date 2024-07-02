@@ -1,9 +1,14 @@
-import React from 'react'
+'use client'
+import ProjectsPage from "@/components/common/Project/ProjectsPage";
+import React from "react";
 
-function page() {
+function page(){
+
   return (
-    <div>Projects Section</div>
-  )
+   <>
+   <ProjectsPage/>
+   </>
+  );
 }
 
-export default page
+export default page;
