@@ -44,7 +44,7 @@ function ProjectsHero() {
         >
           <Link href="/projects" passHref legacyBehavior>
             <motion.a
-              className="inline-block bg-secondaryColor text-primaryColor px-8 py-4 rounded-none text-lg font-semibold hover:bg-secondaryColor transition-colors border-2 border-secondaryColor"
+              className="inline-block dark:bg-secondaryColor bg-primaryColor dark:text-primaryColor text-secondaryColor px-8 py-4 rounded-none text-lg font-semibold dark:hover:bg-secondaryColor hover:bg-primaryColor transition-colors border-2 border-secondaryColor"
               whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgba(255,255,255,0.5)" }}
               whileTap={{ scale: 0.95 }}
             >
@@ -71,7 +71,7 @@ function FeaturedProjectCard({
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
-      className="group relative bg-primaryColor border-2 border-secondaryColor overflow-hidden"
+      className="group relative dark:bg-primaryColor bg-secondaryColor border-2 dark:border-secondaryColor border-primaryColor overflow-hidden"
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
     >
@@ -86,18 +86,18 @@ function FeaturedProjectCard({
           layout="fill"
           objectFit="cover"
         />
-        <div className="absolute inset-0 bg-primaryColor opacity-30 group-hover:opacity-0 transition-opacity duration-300" />
+        <div className="absolute inset-0 dark:bg-primaryColor bg-secondaryColor opacity-30 group-hover:opacity-0 transition-opacity duration-300" />
       </motion.div>
       <div className="relative p-6">
-        <h2 className="text-2xl font-bold mb-2 group-hover:text-secondaryColor transition-colors">
+        <h2 className="text-2xl font-bold mb-2 dark:group-hover:text-secondaryColor transition-colors">
           {project.title}
         </h2>
-        <p className="text-gray-300 mb-4 line-clamp-2">{project.description}</p>
+        <p className="dark:text-gray-300 text-gray-600 mb-4 line-clamp-2">{project.description}</p>
         <motion.a
           href={project.githubLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-secondaryColor text-primaryColor px-4 py-2 rounded-none text-sm hover:bg-opacity-80 transition-colors border border-secondaryColor"
+          className="inline-block dark:bg-secondaryColor bg-primaryColor text-secondaryColor dark:text-primaryColor px-4 py-2 rounded-none text-sm hover:bg-opacity-80 transition-colors border border-secondaryColor"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

@@ -1,16 +1,40 @@
+/* styles/globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.scrollbar-primary::-webkit-scrollbar {
+  width: 6px;
 }
+
+.scrollbar-primary::-webkit-scrollbar-track {
+  background: #FFF7F0; /* Light mode track color */
+}
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
+  background-color: #262523; /* Light mode thumb color */
+  border-radius: 3px;
+}
+
+.scrollbar-secondary::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-secondary::-webkit-scrollbar-track {
+  background: #262523; /* Dark mode track color */
+}
+
+.scrollbar-secondary::-webkit-scrollbar-thumb {
+  background-color: #FFF7F0; /* Dark mode thumb color */
+  border-radius: 2px;
+}
+
+/* Hide scrollbar utility */
 .hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome, Safari, Opera */
 }

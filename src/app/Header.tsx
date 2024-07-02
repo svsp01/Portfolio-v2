@@ -10,10 +10,8 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { href: "/projects", label: "Projects" },
     { href: "/about", label: "About" },
-    { href: "/collaboration", label: "Collaboration" },
-    { href: "/services", label: "Services" },
+    { href: "/projects", label: "Projects" },
     { href: "/contact", label: "Contact" },
   ];
 

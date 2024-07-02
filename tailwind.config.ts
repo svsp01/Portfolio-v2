@@ -10,6 +10,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      
       colors: {
         primaryColor: "#262523",
         secondaryColor: "#FFF7F0",
@@ -19,9 +20,11 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "dotted-pattern": "radial-gradient(currentColor 1px, transparent 1px)",
+        'whatsapp-pattern': 'radial-gradient(currentColor 1px, transparent 1px)',
       },
       backgroundSize: {
         "dotted-pattern": "20px 20px",
+        "whatsapp-pattern":"20px 20px",
       },
 
       keyframes: {

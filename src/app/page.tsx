@@ -1,3 +1,4 @@
+import ContactSection from "@/components/common/Contact/ContactSection";
 import HeroComponent from "@/components/common/HeroSection/HeroComponent";
 import MapSection from "@/components/common/Map/MapSection";
 import ProjectsHero from "@/components/common/Project/ProjectsHero";
@@ -9,6 +10,7 @@ export default function Home() {
 
       <MapSection />
       <ProjectsHero />
+      <ContactSection/>
     </main>
   );
 }
