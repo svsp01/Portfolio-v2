@@ -1,8 +1,7 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FaGraduationCap, FaBriefcase, FaMapMarkerAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import careerData from './careerData';
 
 interface CareerItem {
   year: string;
@@ -16,21 +15,43 @@ interface CareerItem {
 const CareerTimeline: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const { scrollXProgress } = useScroll({ container: scrollRef });
+  const [careerData, setCareerData] = useState<CareerItem[]>([]);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  
+  useEffect(() => {
+    const fetchCareerData = async () => {
+      try {
+        const response = await fetch('/api/career');
+        const data = await response.json();
+        if (data.success) {
+          setCareerData(data.data);
+        } else {
+          console.error('Failed to fetch career data:', data.error);
+        }
+      } catch (error) {
+        console.error('Error fetching career data:', error);
+      }
+    };
+
+    fetchCareerData();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       if (scrollRef.current) {
-        const scrollPosition = scrollRef.current.scrollLeft;
-        const itemWidth = scrollRef.current.scrollWidth / careerData.length;
-        const newIndex = Math.round(scrollPosition / itemWidth);
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        const progress = scrollLeft / (scrollWidth - clientWidth);
+        setScrollProgress(progress);
+
+        const itemWidth = scrollWidth / careerData.length;
+        const newIndex = Math.round(scrollLeft / itemWidth);
         setActiveIndex(newIndex);
       }
     };
 
     scrollRef.current?.addEventListener('scroll', handleScroll);
     return () => scrollRef.current?.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [careerData.length]);
 
   const scrollTo = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -42,13 +63,17 @@ const CareerTimeline: React.FC = () => {
     }
   };
 
+  if (careerData.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="bg-secondaryColor  dark:bg-primaryColor text-primaryColor dark:text-secondaryColor py-16 px-4 overflow-hidden relative">
+    <div className="bg-secondaryColor dark:bg-primaryColor text-primaryColor dark:text-secondaryColor py-16 px-4 overflow-hidden relative">
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full bg-dotted-pattern opacity-10"></div>
       </div>
       <h2 className="text-4xl font-bold text-center mb-12 relative z-10">My Career Journey</h2>
-      <div className="relative z-10 ">
+      <div className="relative z-10">
         <div 
           ref={scrollRef} 
           className="flex overflow-x-scroll pb-10 hide-scrollbar"
@@ -127,10 +152,13 @@ const CareerTimeline: React.FC = () => {
           </button>
         </motion.div>
       </div>
-      <motion.div 
-        className="h-1 bg-primaryColor dark:bg-secondaryColor mt-8"
-        style={{ scaleX: scrollXProgress }}
+      <div className="relative h-1 mt-8">
+      <motion.div
+        className="absolute top-0 left-0 w-[200px] h-full bg-secondaryColor"
+        style={{ scaleX: scrollProgress / 100 + 1, transformOrigin: 'left' }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
       />
+    </div>
     </div>
   );
 };
