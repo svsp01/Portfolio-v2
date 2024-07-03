@@ -70,7 +70,16 @@ const CareerTimeline: React.FC = () => {
   };
 
   if (careerData.length === 0) {
-    return <div>Loading...</div>;
+    return <div className="relative min-h-screen dark:bg-primaryColor dark:text-secondaryColor text-primaryColor flex items-center justify-center">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="text-2xl font-bold"
+    >
+      Loading My Journey...
+    </motion.div>
+  </div>
   }
 
   return (

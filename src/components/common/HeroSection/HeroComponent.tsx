@@ -4,7 +4,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { IconType } from "react-icons";
 import { FaCode, FaPalette, FaMobileAlt, FaRocket, FaCog, FaLightbulb } from "react-icons/fa";
-
+import { motion } from "framer-motion";
 import card1 from "../../../assets/ed.png";
 import card2 from "../../../assets/Image.png";
 import card3 from "../../../assets/OneThing.png";
@@ -65,7 +65,16 @@ const HeroComponent: React.FC = () => {
   }), [isHovered, mousePosition.x, mousePosition.y]);
 
   if (!homeData) {
-    return <div>Loading...</div>;
+    return <div className="relative min-h-screen dark:bg-primaryColor dark:text-secondaryColor text-primaryColor flex items-center justify-center">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="text-2xl font-bold"
+    >
+      Loading Profile...
+    </motion.div>
+  </div>
   }
 
   return (

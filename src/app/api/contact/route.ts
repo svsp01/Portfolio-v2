@@ -1,14 +1,28 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../../utils/dbConnect';
 import Contact from '../../../models/Contact';
+import Question from '@/models/Question';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function GET() {
+    await dbConnect();
+  
+    try {
+      const contact = await Question.find({}).sort('order');
+      return NextResponse.json({ success: true, data: contact });
+    } catch (error) {
+      return NextResponse.json({ success: false, error });
+    }
+  }
+
+export async function POST(request: NextRequest) {
   await dbConnect();
 
   try {
-    const contact = await Contact.create(req.body);
-    return res.status(201).json({ success: true, data: contact });
+    const body = await request.json();
+    const contact = await Contact.create(body);
+    return NextResponse.json({ success: true, data: contact });
   } catch (error) {
-    return res.status(400).json({ success: false, error });
+    return NextResponse.json({ success: false, error });
   }
 }

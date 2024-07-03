@@ -1,15 +1,20 @@
-import mongoose, { Document, Schema } from 'mongoose';
 
-interface IContact extends Document {
-  name: string;
-  email: string;
-  message: string;
-}
+import mongoose from 'mongoose';
 
-const ContactSchema: Schema = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  message: { type: String, required: true },
-});
+const ContactSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'Please provide a name'],
+  },
+  email: {
+    type: String,
+    required: [true, 'Please provide an email'],
+    // match: [/^\S+@\S+\.\S+$/, 'Please provide a valid email'],
+  },
+  message: {
+    type: String,
+    required: [true, 'Please provide a message'],
+  },
+}, { timestamps: true });
 
-export default mongoose.models.Contact || mongoose.model<IContact>('Contact', ContactSchema);
+export default mongoose.models.Contact || mongoose.model('Contact', ContactSchema);

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,8 +7,43 @@ import { projects, Project } from "./projectsData";
 
 function ProjectsHero() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const featuredProjects = projects.slice(0, 3);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchProjects = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch('/api/project');
+        const data = await response.json();
+        if (data.success) {
+          setProjects(data.data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchProjects();
+  }, []);
+
+  const featuredProjects = projects.slice(0, Math.min(3, projects.length));
+  if (loading) {
+    return (
+      <div className="relative min-h-screen dark:bg-primaryColor dark:text-secondaryColor text-primaryColor flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-2xl font-bold"
+        >
+          Loading projects...
+        </motion.div>
+      </div>
+    );
+  }
   return (
     <div className="relative min-h-screen dark:bg-primaryColor dark:text-secondaryColor text-primaryColor overflow-hidden">
       <div className="absolute inset-0 grid grid-cols-6 grid-rows-6">
@@ -27,9 +62,9 @@ function ProjectsHero() {
           Featured Projects
         </motion.h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {featuredProjects.map((project, index) => (
+          {featuredProjects.map((project: any, index) => (
             <FeaturedProjectCard
-              key={project.id}
+              key={project._id}
               project={project}
               index={index}
               setHoveredIndex={setHoveredIndex}

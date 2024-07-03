@@ -1,25 +1,27 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../../utils/dbConnect';
 import Project from '../../../models/Project';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextApiRequest, res: NextApiResponse) {
   await dbConnect();
 
   try {
     const projects = await Project.find({});
-    return res.status(200).json({ success: true, data: projects });
+    return NextResponse.json({ success: true, data: projects });
   } catch (error) {
-    return res.status(400).json({ success: false, error });
+    return NextResponse.json({ success: false, error });
   }
 }
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(request: NextRequest) {
   await dbConnect();
 
   try {
-    const project = await Project.create(req.body);
-    return res.status(201).json({ success: true, data: project });
+    const body = await request.json();
+    const project = await Project.create(body);
+    return NextResponse.json({ success: true, data: project });
   } catch (error) {
-    return res.status(400).json({ success: false, error });
+    return NextResponse.json({ success: false, error });
   }
 }
