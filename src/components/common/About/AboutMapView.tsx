@@ -1,9 +1,17 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import mapData from "./mapData";
 
 const AboutMapView: React.FC = () => {
+  interface CareerItem {
+    year: string;
+    title: string;
+    organization: string;
+    description: string;
+    location: string;
+  }
+  const [careerData, setCareerData] = useState<CareerItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeCardPosition, setActiveCardPosition] = useState({
     top: 0,
@@ -18,6 +26,26 @@ const AboutMapView: React.FC = () => {
     stiffness: 200,
     damping: 90,
   });
+
+  const fetchCareerData = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/career');
+      if (!response.ok) {
+        throw new Error('Failed to fetch career data');
+      }
+      const data = await response.json();
+      setCareerData(data?.data);
+    } catch (error) {
+      console.error('Error fetching career data:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCareerData();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,7 +77,11 @@ const AboutMapView: React.FC = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [careerData]);
+
+  if (isLoading) {
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  }
 
   return (
     <div
@@ -60,7 +92,7 @@ const AboutMapView: React.FC = () => {
       <div className="h-[calc(100vh-1rem)] flex flex-col md:flex-row">
         <div className="w-full md:w-1/2 flex hide-scrollbar overflow-y-auto">
           <div className="w-1/4 md:w-1/3">
-            {mapData.map((item, index) => (
+            {careerData.map((item, index) => (
               <motion.div
                 key={`year-${index}`}
                 className="text-right pr-2 py-1 md:pr-4 md:py-8"
@@ -80,7 +112,7 @@ const AboutMapView: React.FC = () => {
             />
           </div>
           <div className="w-2/3 md:w-7/12">
-            {mapData.map((item, index) => (
+            {careerData.map((item, index) => (
               <motion.div
                 key={`card-${index}`}
                 ref={(el: any) => (cardRefs.current[index] = el)}
@@ -103,7 +135,7 @@ const AboutMapView: React.FC = () => {
           </div>
         </div>
         <div className="hidden md:block w-1/2 p-8 relative">
-          {mapData[activeIndex] && (
+          {careerData[activeIndex] && (
             <motion.div
               key={`active-${activeIndex}`}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -120,15 +152,14 @@ const AboutMapView: React.FC = () => {
               }}
             >
               <h2 className="text-2xl font-bold mb-4 dark:text-secondaryColor text-primaryColor">
-                {mapData[activeIndex].title}
+                {careerData[activeIndex].title}
               </h2>
               <p className="text-lg mb-4 dark:text-secondaryColor text-primaryColor">
-                {mapData[activeIndex].year}
+                {careerData[activeIndex].year}
               </p>
               <p className="text-base dark:text-secondaryColor text-primaryColor">
-                {mapData[activeIndex].description}
+                {careerData[activeIndex].description}
               </p>
-
             </motion.div>
           )}
         </div>

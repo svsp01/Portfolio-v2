@@ -39,7 +39,7 @@ const AboutSection: React.FC = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <AiOutlineArrowRight className="text-white w-6 h-6" />
+              <AiOutlineArrowRight className="dark:text-secondaryColor text-primaryColor w-6 h-6" />
             </motion.div>
           </Link>
         </motion.div>

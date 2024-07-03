@@ -269,7 +269,7 @@ ${senderName}
                       className={`px-4 py-2 dark:text-secondaryColor text-primaryColor rounded-lg border-2 focus:outline-none focus:ring focus:ring-primaryColor
                       ${
                         queryType === type
-                          ? "bg-primaryColor dark:bg-gray-400 text-secondaryColor dark:text-primaryColor"
+                          ? "bg-primaryColor dark:bg-gray-800 text-secondaryColor dark:text-primaryColor"
                           : "dark:border-secondaryColor border-primaryColor  text-primaryColor"
                       }`}
                       onClick={() => handleQueryTypeChange(type)}
