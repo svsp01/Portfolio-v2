@@ -269,7 +269,7 @@ ${senderName}
                       className={`px-4 py-2 dark:text-secondaryColor text-primaryColor rounded-lg border-2 focus:outline-none focus:ring focus:ring-primaryColor
                       ${
                         queryType === type
-                          ? "bg-primaryColor dark:bg-secondaryColor text-secondaryColor dark:text-black"
+                          ? "bg-primaryColor dark:bg-gray-400 text-secondaryColor dark:text-primaryColor"
                           : "dark:border-secondaryColor border-primaryColor  text-primaryColor"
                       }`}
                       onClick={() => handleQueryTypeChange(type)}
@@ -341,7 +341,7 @@ ${senderName}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={2}
                   placeholder="Enter your message here..."
-                  className="w-full p-2 bg-transparent border-b border-dashed border-gray-400 focus:outline-none focus:border-primaryColor resize-none"
+                  className="w-full p-2 bg-transparent border-b border-dashed border-gray-400 focus:outline-none focus:border-primaryColor text-primaryColor resize-none"
                   style={{lineHeight: '2.5em', background: 'repeating-linear-gradient(transparent, transparent 2.4em, #ccc 2.4em, #ccc 2.5em)'}}
                 />
                 <div className="absolute inset-0 pointer-events-none" style={{zIndex: -1}}>
