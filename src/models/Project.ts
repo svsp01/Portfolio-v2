@@ -5,6 +5,7 @@ interface IProject extends Document {
   description: string;
   image: string;
   githubLink: string;
+  hostLink:string
 }
 
 const ProjectSchema: Schema = new Schema({
@@ -12,6 +13,7 @@ const ProjectSchema: Schema = new Schema({
   description: { type: String, required: true },
   image: { type: String, required: true },
   githubLink: { type: String, required: true },
+  hostLink: { type: String, required: true },
 });
 
 export default mongoose.models.Project || mongoose.model<IProject>('Project', ProjectSchema);

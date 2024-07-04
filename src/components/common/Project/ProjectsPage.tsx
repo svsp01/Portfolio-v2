@@ -146,7 +146,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </div>
         </motion.a>
       <motion.a
-          href={project.hostLink}
+          href={project?.hostLink}
           target="_blank"
           rel="noopener noreferrer"
           className="flex absolute top-0 m-6 p-6 right-0 duration-300 bg-white justify-center text-black px-2 py-2 rounded-full hover:bg-gray-200 transition-colors"
