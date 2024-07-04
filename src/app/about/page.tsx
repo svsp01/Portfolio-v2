@@ -5,6 +5,7 @@ function page() {
   return (
     <div>
       <AboutComponent/>
+      
     </div>
   )
 }
