@@ -1,0 +1,12 @@
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["@aws-sdk"]
+[functions."*"]
+  timeout = 30
+  [build]
+  command = "next build"
+  publish = ".next"
+
+[[edge_functions]]
+  function = "api/*"
+  path = "/api/*"
