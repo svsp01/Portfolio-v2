@@ -24,6 +24,7 @@ const ChatContact: React.FC = () => {
     setInput('');
     setStep(0);
     setContactData({ name: '', email: '', message: '' });
+    fetchQuestions()
   };
 
   useEffect(() => {

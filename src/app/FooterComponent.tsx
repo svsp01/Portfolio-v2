@@ -1,23 +1,19 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin,  FaInstagram,  } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
 
 const FooterComponent = () => {
-  const handleEmailClick = () => {
-    // Replace with your email handling logic, e.g., opening a mail client or redirecting to a contact form
-    window.location.href = 'mailto:youremail@example.com';
-  };
+ 
 
   return (
     <footer className="dark:bg-primaryColor bg-secondaryColor py-8 px-4">
       <div className="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
         <div
-        //   whileHover={{ scale: 1.1 }}
           className="text-primaryColor dark:text-secondaryColor flex items-center"
         >
           <FaGithub size={24} />
           <a
-            href="https://github.com/yourgithub"
+            href="https://github.com/svsp01"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2"
@@ -26,12 +22,11 @@ const FooterComponent = () => {
           </a>
         </div>
         <div
-        //   whileHover={{ scale: 1.1 }}
           className="text-primaryColor dark:text-secondaryColor flex items-center"
         >
           <FaLinkedin size={24} />
           <a
-            href="https://linkedin.com/in/yourlinkedin"
+            href="https://linkedin.com/in/sakthi-vignesh-6a2447165"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2"
@@ -40,26 +35,24 @@ const FooterComponent = () => {
           </a>
         </div>
         <div
-        //   whileHover={{ scale: 1.1 }}
           className="text-primaryColor dark:text-secondaryColor flex items-center"
         >
-          <FaTwitter size={24} />
+          <SiGmail size={24} />
           <a
-            href="https://twitter.com/yourtwitter"
+            href="mailto:sakthisvsp01@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2"
           >
-            Twitter
+            Gmail
           </a>
         </div>
         <div
-        //   whileHover={{ scale: 1.1 }}
           className="text-primaryColor dark:text-secondaryColor flex items-center"
         >
           <FaInstagram size={24} />
           <a
-            href="https://instagram.com/yourinstagram"
+            href="https://instagram.com/vanta_moonn"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2"
@@ -69,7 +62,7 @@ const FooterComponent = () => {
         </div>
       </div>
       <div className="text-center mt-4 text-xs text-gray-600 dark:text-gray-400">
-        &copy; {new Date().getFullYear()} Your Name. All Rights Reserved.
+        &copy; {new Date().getFullYear()} Sakthi Vignesh. All Rights Reserved.
       </div>
       <div
         

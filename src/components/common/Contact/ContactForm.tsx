@@ -1,13 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import emailjs from '@emailjs/browser';
 import { motion } from "framer-motion";
 import {
   FaEnvelope,
   FaWhatsapp,
   FaLinkedin,
   FaGithub,
-  FaTwitter,
 } from "react-icons/fa";
 
 const ContactForm: React.FC = () => {
@@ -28,21 +26,15 @@ const ContactForm: React.FC = () => {
 
 
   const [floatingIcons, setFloatingIcons] = useState([
-    { icon: <FaEnvelope />, link: "mailto:your-email@example.com", x: 0, y: 0 },
-    { icon: <FaWhatsapp />, link: "https://wa.me/yourphonenumber", x: 0, y: 0 },
+    { icon: <FaEnvelope />, link: "mailto:sakthisvsp01@gmail.com", x: 0, y: 0 },
+    { icon: <FaWhatsapp />, link: "https://wa.me/9003817379", x: 0, y: 0 },
     {
       icon: <FaLinkedin />,
-      link: "https://www.linkedin.com/in/yourprofile",
+      link: "https://www.linkedin.com/in/sakthi-vignesh-6a2447165",
       x: 0,
       y: 0,
     },
-    { icon: <FaGithub />, link: "https://github.com/yourusername", x: 0, y: 0 },
-    {
-      icon: <FaTwitter />,
-      link: "https://twitter.com/yourusername",
-      x: 0,
-      y: 0,
-    },
+    { icon: <FaGithub />, link: "https://github.com/svsp01", x: 0, y: 0 },
   ]);
   const nextStep = () => {
     if (queryType === "hiring" || queryType === "consulting") {
@@ -187,15 +179,7 @@ ${senderName}
   };
 
 
-  const buttonVariants = {
-    hover: { scale: 1.05 },
-    tap: { scale: 0.95 },
-  };
 
-  const fadeInVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  };
   useEffect(() => {
     const interval = setInterval(() => {
       setFloatingIcons((icons) =>
@@ -239,7 +223,7 @@ ${senderName}
       ))}
       <div className="flex justify-center items-center h-screen">
         <motion.div
-          className="  w-full max-w-2xl p-6 bg-secondaryColor dark:bg-primaryColor border-2 border-primaryColor dark:border-secondaryColor rounded-lg shadow-lg"
+          className="  w-full max-w-2xl p-6 z-10 bg-secondaryColor dark:bg-primaryColor border-2 border-primaryColor dark:border-secondaryColor rounded-lg shadow-lg"
           initial="hidden"
           animate="visible"
           variants={{
