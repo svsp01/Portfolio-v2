@@ -35,7 +35,8 @@ const AboutMapView: React.FC = () => {
         throw new Error('Failed to fetch career data');
       }
       const data = await response.json();
-      setCareerData(data?.data);
+      const sortedData = data.data.sort((a: CareerItem, b: CareerItem) => parseInt(a.year) - parseInt(b.year));
+      setCareerData(sortedData);
     } catch (error) {
       console.error('Error fetching career data:', error);
     } finally {

@@ -28,11 +28,11 @@ const Header: React.FC = () => {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="md:hidden border-primaryColor dark:border-secondaryColor border-e rounded-none p-8"
         />
-        <NavbarContent className="border-e border-primaryColor dark:border-secondaryColor  h-full">
+        <NavbarContent className="md:border-e border-primaryColor dark:border-secondaryColor  h-full">
           <NavbarBrand className='flex justify-center items-center'>
             <Link href="/">
-              <div className="text-lg md:text-3xl font-mono text-primaryColor dark:text-secondaryColor transition-colors duration-300 hover:text-gray-700 dark:hover:text-gray-300 whitespace-nowrap px-4">
-                Sakthi Vignesh
+              <div className="text-lg md:text-3xl font-serif font-bold text-primaryColor dark:text-secondaryColor transition-colors duration-300 hover:text-gray-700 dark:hover:text-gray-300 whitespace-nowrap px-4">
+                S V
               </div>
             </Link>
           </NavbarBrand>
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
           ))}
         </NavbarContent>
 
-        <NavbarContent justify="end" className="border-s border-primaryColor dark:border-secondaryColor  h-full sm:px-4">
+        <NavbarContent justify="end" className="border-none border-primaryColor dark:border-secondaryColor  h-full sm:px-4">
           <NavbarItem>
             <ThemeSwitcher />
           </NavbarItem>

@@ -10,10 +10,15 @@ export function ThemeSwitcher() {
     <div className="p-2 sm:p-6">
       <Switch
         checked={theme === 'dark'}
-        startContent={<SunIcon />}
-        endContent={<MoonIcon />}
         onChange={(e) => setTheme(theme === 'dark' ? 'light' : 'dark')}
         aria-label="Toggle theme"
+        thumbIcon={({ isSelected, className }) =>
+          isSelected ? (
+            <SunIcon className={className} />
+          ) : (
+            <MoonIcon className={className} />
+          )
+        }
       />
     </div>
   );

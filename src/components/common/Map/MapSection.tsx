@@ -30,7 +30,8 @@ const CareerTimeline: React.FC = () => {
         const response = await fetch("/api/career");
         const data = await response.json();
         if (data.success) {
-          setCareerData(data.data);
+          const sortedData = data.data.sort((a: CareerItem, b: CareerItem) => parseInt(a.year) - parseInt(b.year));
+          setCareerData(sortedData);
         } else {
           console.error("Failed to fetch career data:", data.error);
         }
