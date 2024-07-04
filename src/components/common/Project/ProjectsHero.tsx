@@ -3,11 +3,10 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { projects, Project } from "./projectsData";
 
 function ProjectsHero() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -97,7 +96,7 @@ function FeaturedProjectCard({
   index,
   setHoveredIndex,
 }: {
-  project: Project;
+  project: any;
   index: number;
   setHoveredIndex: (index: number | null) => void;
 }) {

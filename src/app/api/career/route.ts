@@ -1,9 +1,8 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '../../../utils/dbConnect';
 import Career from '../../../models/Career';
-import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest) {
   await dbConnect();
 
   try {
@@ -14,11 +13,11 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(req: NextRequest) {
   await dbConnect();
 
   try {
-    const body = await request.json();
+    const body = await req.json();
     const career = await Career.create(body);
     return NextResponse.json({ success: true, data: career });
   } catch (error) {

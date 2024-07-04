@@ -51,9 +51,14 @@ const HeroComponent: React.FC = () => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX + 13, y: e.clientY + 13 });
     };
-
+    if (typeof window !== 'undefined') {
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    }
+    return () => {
+      if (typeof window !== 'undefined') {
+      window.removeEventListener("mousemove", handleMouseMove);
+      }
+    }
   }, [fetchHomeData]);
 
   const buttonStyle = useMemo(() => ({

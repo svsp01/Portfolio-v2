@@ -174,14 +174,16 @@ ${senderName}
     const encodedBody = encodeURIComponent(template);
     
     const mailtoLink = `mailto:${recipientEmail}?subject=${encodedSubject}&body=${encodedBody}`;
-    
+    if (typeof window !== 'undefined') {
     window.location.href = mailtoLink;
+    }
   };
 
 
 
   useEffect(() => {
     const interval = setInterval(() => {
+      if (typeof window !== 'undefined') {
       setFloatingIcons((icons) =>
         icons.map((icon) => ({
           ...icon,
@@ -189,6 +191,7 @@ ${senderName}
           y: Math.random() * window.innerHeight,
         }))
       );
+    }
     }, 5000);
 
     return () => clearInterval(interval);
@@ -204,7 +207,7 @@ ${senderName}
 
   return (
     <div className="relative h-screen dark:bg-primaryColor bg-secondaryColor overflow-hidden">
-      {floatingIcons.map((icon, index) => (
+      { (typeof window !== 'undefined')  && floatingIcons.map((icon, index) => (
         <motion.a
           key={index}
           href={icon.link}
@@ -212,6 +215,7 @@ ${senderName}
           rel="noopener noreferrer"
           className="absolute text-3xl dark:text-secondaryColor text-primaryColor"
           initial={{
+            
             x: Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
           }}

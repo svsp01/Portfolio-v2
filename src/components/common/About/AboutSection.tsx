@@ -31,7 +31,7 @@ const AboutSection: React.FC = () => {
           className="flex items-center justify-center space-x-4 mt-4 md:mt-0"
         >
           <motion.p className="text-lg text-center text-gray-600">
-            Let's work together!
+            Let&apos;s work together&#33;
           </motion.p>
           <Link href="/contact">
             <motion.div
