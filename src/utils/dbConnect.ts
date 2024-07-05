@@ -22,7 +22,7 @@ async function dbConnect() {
       bufferCommands: false,
     };
 
-    cached.promise = mongoose.connect(MONGO_URI as string, opts).then((mongoose) => {
+    cached.promise = mongoose.connect('mongodb+srv://VantaVerseSakthiSvsp:WfeDMZ$CYkThZm2@vantaverselovegame.cjjckqh.mongodb.net/portfolio?retryWrites=true&w=majority', opts).then((mongoose) => {
       return mongoose;
     });
   }
